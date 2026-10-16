@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_tile_card"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <Spinner
+        android:id="@+id/spinnerTransferProduct"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_weight="2"
+        android:background="@drawable/bg_search_bar" />
+
+    <EditText
+        android:id="@+id/etTransferQty"
+        android:layout_width="70dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_search_bar"
+        android:gravity="center"
+        android:hint="الكمية"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        android:textSize="14sp" />
+
+    <ImageButton
+        android:id="@+id/btnRemoveTransferItem"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="6dp"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="حذف"
+        android:padding="6dp"
+        android:src="@drawable/ic_delete"
+        app:tint="@color/danger" />
+
+</LinearLayout>

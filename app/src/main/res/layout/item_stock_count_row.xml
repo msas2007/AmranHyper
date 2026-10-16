@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_tile_card"
+    android:elevation="1dp"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layoutDirection="rtl">
+
+    <!-- Top Row: Product Name & System Stock Badge -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCountProductName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="اسم المنتج"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSystemQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_info"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="الرصيد النظامي: 0 حبة"
+            android:textColor="@color/info"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Middle Row: Actual Qty Input with - / + buttons & Difference Badge -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="الفعلي الجرد:"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnMinusQty"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_header_button"
+            android:contentDescription="إنقاص"
+            android:padding="6dp"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/danger" />
+
+        <EditText
+            android:id="@+id/etActualQty"
+            android:layout_width="70dp"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_search_bar"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:padding="4dp"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnPlusQty"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_header_button"
+            android:contentDescription="زيادة"
+            android:padding="6dp"
+            android:src="@drawable/ic_add"
+            app:tint="@color/success" />
+
+        <TextView
+            android:id="@+id/tvDifference"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_badge_good_stock"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="الفرق: 0"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Bottom Row: Reason Input Field -->
+    <EditText
+        android:id="@+id/etCountReason"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_search_bar"
+        android:hint="سبب الفارق والتسوية (تلف / عجز / زيادة)..."
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_muted"
+        android:textSize="12sp" />
+
+</LinearLayout>

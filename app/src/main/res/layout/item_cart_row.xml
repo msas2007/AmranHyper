@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_tile_card"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layout_marginBottom="8dp"
+    android:layoutDirection="rtl">
+
+    <!-- Product Details -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCartProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اسم المنتج"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCartProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="0.00 ر.س للوحدة"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Quantity Stepper Controls [-] Qty [+] -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="6dp">
+
+        <ImageButton
+            android:id="@+id/btnCartDecrement"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_search_bar"
+            android:contentDescription="إنقاص الكمية"
+            android:padding="6dp"
+            android:src="@drawable/ic_edit"
+            app:tint="@color/danger" />
+
+        <TextView
+            android:id="@+id/tvCartQty"
+            android:layout_width="38dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnCartIncrement"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_search_bar"
+            android:contentDescription="زيادة الكمية"
+            android:padding="6dp"
+            android:src="@drawable/ic_add"
+            app:tint="@color/primary" />
+    </LinearLayout>
+
+    <!-- Total Price for Item -->
+    <TextView
+        android:id="@+id/tvCartItemTotal"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="0.00 ر.س"
+        android:textColor="@color/primary"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginStart="4dp" />
+
+    <!-- Remove Button -->
+    <ImageButton
+        android:id="@+id/btnCartRemove"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="حذف المنتج من السلة"
+        android:padding="6dp"
+        android:src="@drawable/ic_delete"
+        app:tint="@color/danger" />
+
+</LinearLayout>

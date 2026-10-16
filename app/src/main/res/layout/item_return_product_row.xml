@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_tile_card"
+    android:elevation="1dp"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- Top Row: Product Name + Unit Price -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvReturnItemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="اسم الصنف"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvReturnItemUnitPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00 ر.ي"
+            android:textColor="@color/primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Info Row: Sold Qty, Already Returned Qty, Returnable Qty -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvReturnItemSoldQty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="المباع: 0"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvReturnItemPrevReturned"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="مُرجع سابقاً: 0"
+            android:textColor="@color/warning"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvReturnItemAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="المتاح للإرجاع: 0"
+            android:textColor="@color/info"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/stroke_color" />
+
+    <!-- Bottom Row: Return Quantity Input & Subtotal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="الكمية المرتجعة:"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnReturnQtyDec"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_tile_card"
+            android:contentDescription="إنقاص"
+            android:src="@drawable/ic_expand_more"
+            app:tint="@color/text_primary" />
+
+        <EditText
+            android:id="@+id/etReturnItemQty"
+            android:layout_width="64dp"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_search_bar"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            android:padding="4dp"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnReturnQtyInc"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_tile_card"
+            android:contentDescription="زيادة"
+            android:src="@drawable/ic_expand_less"
+            app:tint="@color/text_primary" />
+
+        <Button
+            android:id="@+id/btnReturnAllItem"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_tile_card"
+            android:paddingHorizontal="8dp"
+            android:text="إرجاع الكل"
+            android:textColor="@color/bg_page"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvReturnItemSubtotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="0.00 ر.ي"
+            android:textColor="@color/danger"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

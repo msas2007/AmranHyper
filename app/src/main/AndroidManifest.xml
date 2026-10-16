@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyStoreApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/amran_hyper"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyStoreمتجري">
+
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.DashboardActivity"
+            android:exported="false" />
+
+        <activity android:name=".activities.CategoriesActivity" />
+        <activity android:name=".activities.ProductsActivity" />
+        <activity android:name=".activities.SalesActivity" />
+        <activity android:name=".activities.PurchasesActivity" />
+        <activity android:name=".activities.CustomersActivity" />
+        <activity android:name=".activities.CustomerDetailActivity" />
+        <activity android:name=".activities.ReturnsActivity" />
+        <activity android:name=".activities.ReportsActivity" />
+        <activity android:name=".activities.InvoicesActivity" />
+        <activity android:name=".activities.InvoiceDetailActivity" />
+        <activity android:name=".activities.ExpiryActivity" />
+        <activity android:name=".activities.BackupActivity" />
+        <activity android:name=".activities.ExpensesActivity" />
+        <activity android:name=".activities.ClosingActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".CategoryProductsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.CategoryProductsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.SuppliersActivity" />
+        <activity android:name=".activities.SupplierDetailActivity" />
+    </application>
+
+</manifest>

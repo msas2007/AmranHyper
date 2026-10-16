@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_tile_card"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layoutDirection="rtl">
+
+    <!-- Header Drag Indicator / Title -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/bg_tile_card"
+        android:backgroundTint="@color/stroke_color" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="قائمة الخدمات وإدارة النظام"
+        android:textColor="@color/text_primary"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <!-- Row 1: التقارير + المصروفات -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialogMoreBtnReports"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_reports"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="التقارير والأرباح"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/primary" />
+
+        <Button
+            android:id="@+id/dialogMoreBtnExpenses"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_wallet"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="المصروفات"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/warning" />
+    </LinearLayout>
+
+    <!-- Row 2: التصنيفات + الإعدادات -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialogMoreBtnCategories"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_category"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="التصنيفات"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/purple" />
+
+        <Button
+            android:id="@+id/dialogMoreBtnBackup"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_backup"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="النسخ الاحتياطي"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/info" />
+    </LinearLayout>
+
+    <!-- Row 3: الصلاحيات + جرد المخزون/تقفيل -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialogMoreBtnPermissions"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_settings"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="الصلاحيات"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/secondary" />
+
+        <Button
+            android:id="@+id/dialogMoreBtnClosing"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_inventory"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="تقفيل الصندوق"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/primary_dark" />
+    </LinearLayout>
+
+    <!-- Row 4: الحسابات الآجلة + تنبيهات الصلاحية -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialogMoreBtnDebts"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_people"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="ديون العملاء"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/danger" />
+
+        <Button
+            android:id="@+id/dialogMoreBtnExpiry"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_alert_warning"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center_vertical|start"
+            android:text="تنبيهات المخزون"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/orange" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/dialogMoreBtnClose"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/bg_card_secondary"
+        android:text="إغلاق"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

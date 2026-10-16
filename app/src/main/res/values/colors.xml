@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Theme Neutral Colors (Modern Palette) -->
+    <color name="bg_page">#F5F7FA</color>            <!-- Crisp soft modern background -->
+    <color name="bg_card">#FFFFFF</color>            <!-- Clean white surface -->
+    <color name="bg_card_secondary">#EEF2F6</color>  <!-- Muted neutral container -->
+    <color name="bg_input">#FFFFFF</color>           <!-- Clean input fields -->
+    <color name="bg_input_alt">#F0F4F8</color>       <!-- Light neutral field -->
+    <color name="stroke_color">#E5E9F0</color>       <!-- Refined border and divider -->
+    <color name="stroke_focused">#243B7A</color>     <!-- Focused stroke -->
+
+    <!-- Header Gradients / Colors -->
+    <color name="bg_header_start">#1B2A57</color>    <!-- Deep Navy start -->
+    <color name="bg_header_center">#243B7A</color>   <!-- Brand Navy Primary -->
+    <color name="bg_header_end">#2E468C</color>      <!-- Subtle vibrant end -->
+    <color name="bg_header">#243B7A</color>
+    <color name="header_text">#FFFFFF</color>
+    <color name="header_subtext">#D0D8EA</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#172033</color>       <!-- High readability dark slate -->
+    <color name="text_secondary">#687386</color>     <!-- Modern secondary slate -->
+    <color name="text_muted">#9AA5B8</color>         <!-- Subdued captions & placeholders -->
+    <color name="text_on_primary">#FFFFFF</color>    <!-- Pure white text on brand buttons -->
+    <color name="text_on_secondary">#FFFFFF</color>
+
+    <!-- Core Brand & Semantic Colors -->
+    <color name="primary">#243B7A</color>            <!-- Brand Navy -->
+    <color name="primary_variant">#1E3266</color>    <!-- Active/Pressed Navy -->
+    <color name="primary_dark">#15244C</color>       <!-- Dark Navy -->
+    <color name="primary_light">#EAEFFB</color>      <!-- Light Navy Tint -->
+    <color name="secondary">#6C7AE0</color>          <!-- Modern Indigo -->
+    <color name="secondary_light">#EEF0FC</color>
+    <color name="accent">#19B394</color>             <!-- Mint Teal Accent -->
+    <color name="accent_light">#E3F8F3</color>
+    <color name="success">#20A56B</color>            <!-- Emerald Green -->
+    <color name="success_light">#E6F7F0</color>
+    <color name="warning">#F0A43C</color>            <!-- Warm Amber Warning -->
+    <color name="warning_light">#FEF6EC</color>
+    <color name="danger">#D95B5B</color>             <!-- Crimson Coral Danger -->
+    <color name="danger_light">#FBECEC</color>
+    <color name="info">#3A82EE</color>               <!-- Modern Blue Info -->
+    <color name="info_light">#EBF2FD</color>
+    <color name="purple">#6C7AE0</color>             <!-- Unified with secondary -->
+    <color name="purple_light">#EEF0FC</color>
+    <color name="pink">#E05285</color>
+    <color name="orange">#EA733B</color>             <!-- Supply / Purchases Orange -->
+    <color name="orange_light">#FDF1EA</color>
+
+    <!-- Ripple & Overlay -->
+    <color name="ripple_color">#14000000</color>
+</resources>

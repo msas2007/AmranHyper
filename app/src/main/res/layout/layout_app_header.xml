@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appHeaderLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dashboard_header"
+    android:elevation="4dp"
+    android:gravity="center_vertical"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="14dp">
+
+    <!-- Drawer Toggle Button -->
+    <ImageButton
+        android:id="@+id/btnDrawerMenu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_header_button"
+        android:contentDescription="فتح القائمة"
+        android:padding="9dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_menu"
+        app:tint="@color/header_text" />
+
+    <!-- Page Title & Subtitle Container -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="الرئيسية"
+            android:textColor="@color/header_text"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvHeaderSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="عمران هايبر"
+            android:textColor="@color/header_subtext"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Theme Toggle Icon -->
+    <ImageButton
+        android:id="@+id/btnHeaderThemeToggle"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/bg_header_button"
+        android:contentDescription="تبديل الثيم"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_theme_toggle"
+        app:tint="@color/header_text" />
+
+    <!-- Notifications Icon -->
+    <ImageButton
+        android:id="@+id/btnHeaderNotifications"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/bg_header_button"
+        android:contentDescription="الإشعارات"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_notifications"
+        app:tint="@color/header_text" />
+
+</LinearLayout>

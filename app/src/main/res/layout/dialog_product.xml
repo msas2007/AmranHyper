@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_tile_card"
+    android:layoutDirection="rtl">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="إضافة / تعديل بيانات الصنف"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:layout_marginBottom="18dp" />
+
+        <!-- ============================================ -->
+        <!-- SECTION 1: BASIC INFO -->
+        <!-- ============================================ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. البيانات الأساسية للمنتج"
+            android:textColor="@color/primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Product Name -->
+        <EditText
+            android:id="@+id/dialogEtProductName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="اسم المنتج *"
+            android:textSize="14sp"
+            android:paddingHorizontal="12dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_muted"
+            android:background="@drawable/bg_search_bar"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Barcode + Scan Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <EditText
+                android:id="@+id/dialogEtProductBarcode"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:hint="الباركود (مسح أو كتابة)"
+                android:textSize="14sp"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_muted"
+                android:background="@drawable/bg_search_bar"
+                android:layout_marginEnd="6dp" />
+
+            <Button
+                android:id="@+id/dialogBtnScanBarcode"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="مسح"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/primary"
+                android:drawableStart="@drawable/ic_barcode_scanner"
+                android:drawablePadding="6dp"
+                android:paddingHorizontal="12dp"
+                app:drawableTint="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Category & Unit -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="التصنيف *"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp" />
+                <Spinner
+                    android:id="@+id/dialogSpCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_search_bar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="وحدة البيع"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp" />
+                <EditText
+                    android:id="@+id/dialogEtUnitName"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:hint="حبة / كرتون / كيلو"
+                    android:textSize="13sp"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted"
+                    android:background="@drawable/bg_search_bar" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Weighted Checkbox -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/dialogCbIsWeighted"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="منتج ميزان (يباع بالوزن)"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/dialogEtUnitFactor"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="46dp"
+                android:hint="معامل التحويل (24)"
+                android:inputType="numberDecimal"
+                android:textSize="13sp"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_muted"
+                android:background="@drawable/bg_search_bar" />
+        </LinearLayout>
+
+
+        <!-- ============================================ -->
+        <!-- SECTION 2: PRICING -->
+        <!-- ============================================ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. أسعار التسعير والبيع"
+            android:textColor="@color/primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="سعر الشراء *"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/dialogEtPurchasePrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:hint="0.00 ر.س"
+                    android:inputType="numberDecimal"
+                    android:textSize="14sp"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted"
+                    android:background="@drawable/bg_search_bar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="سعر البيع *"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/dialogEtSalePrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:hint="0.00 ر.س"
+                    android:inputType="numberDecimal"
+                    android:textSize="14sp"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted"
+                    android:background="@drawable/bg_search_bar" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- ============================================ -->
+        <!-- SECTION 3: STOCK CONTROL -->
+        <!-- ============================================ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. إدارة وتنبيهات المخزون"
+            android:textColor="@color/primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الكمية الحالية *"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/dialogEtQuantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="14sp"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted"
+                    android:background="@drawable/bg_search_bar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حد أدنى للتنبيه"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/dialogEtMinQuantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:hint="5"
+                    android:inputType="number"
+                    android:textSize="14sp"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_muted"
+                    android:background="@drawable/bg_search_bar" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- ============================================ -->
+        <!-- SECTION 4: EXPIRY DATE -->
+        <!-- ============================================ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. تاريخ الصلاحية (اختياري)"
+            android:textColor="@color/primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="22dp">
+
+            <EditText
+                android:id="@+id/dialogEtExpiryDate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="46dp"
+                android:hint="YYYY-MM-DD"
+                android:textSize="14sp"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_muted"
+                android:background="@drawable/bg_search_bar"
+                android:layout_marginEnd="6dp" />
+
+            <Button
+                android:id="@+id/dialogBtnPickDate"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:text="التقويم"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/primary"
+                android:paddingHorizontal="14dp" />
+        </LinearLayout>
+
+        <!-- Main Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/dialogBtnSave"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="حفظ الصنف"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/success"
+                android:layout_marginEnd="6dp" />
+
+            <Button
+                android:id="@+id/dialogBtnCancel"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="50dp"
+                android:text="إلغاء"
+                android:textSize="14sp"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="@color/stroke_color"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

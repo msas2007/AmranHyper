@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_page"
+    android:layoutDirection="rtl">
+
+    <!-- MAIN CONTAINER ABOVE BOTTOM NAVIGATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigation"
+        android:orientation="vertical">
+
+        <!-- ============================================ -->
+        <!-- 1. TOP HEADER & BARCODE SEARCH -->
+        <!-- ============================================ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_dashboard_header"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="18dp">
+
+            <!-- Title Row with Back Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnSalesBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_header_button"
+                    android:contentDescription="رجوع"
+                    android:padding="9dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/header_text" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="نقطة البيع السريعة (POS)"
+                        android:textColor="@color/header_text"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="مسح الباركود، إدارة السلة والتسديد الفوري"
+                        android:textColor="@color/header_subtext"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Search Barcode & Name Input -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_search_bar"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/text_muted"
+                        android:contentDescription="بحث" />
+
+                    <EditText
+                        android:id="@+id/etSaleProductBarcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:background="@null"
+                        android:hint="ابحث بالاسم أو امسح الباركود..."
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_muted"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnScanBarcode"
+                    android:layout_width="52dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_tile_card"
+                    android:elevation="2dp"
+                    android:padding="0dp"
+                    android:drawableTop="@drawable/ic_barcode_scanner"
+                    app:drawableTint="@color/primary"
+                    android:paddingTop="11dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================ -->
+        <!-- 2. POS BODY -->
+        <!-- ============================================ -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp">
+
+                <!-- Quick Pick Products Horizontal Chips -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:text="منتجات الوصول السريع"
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/layoutQuickProducts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- Populated dynamically with chips -->
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Quantity & Add To Cart Controller Bar -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_tile_card"
+                    android:elevation="1dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="الكمية:"
+                        android:textColor="@color/text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etSaleQuantity"
+                        android:layout_width="64dp"
+                        android:layout_height="42dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/bg_search_bar"
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:text="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnAddToCart"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/primary"
+                        android:drawableStart="@drawable/ic_pos"
+                        android:drawablePadding="8dp"
+                        android:paddingHorizontal="12dp"
+                        android:text="إضافة للسلة"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:drawableTint="@color/text_on_primary" />
+                </LinearLayout>
+
+                <!-- ============================================ -->
+                <!-- 3. CART CONTAINER (NO CLIPPED CONTENT) -->
+                <!-- ============================================ -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_dashboard_card"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/tvCartHeaderTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🛒 السلة (0 أصناف)"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCartTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00 ر.س"
+                            android:textColor="@color/primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Scrollable Cart Items List View -->
+                    <ListView
+                        android:id="@+id/lvCartItems"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:divider="@null"
+                        android:dividerHeight="0dp"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+
+                <!-- Discount & Net Total Summary -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_tile_card"
+                    android:elevation="2dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <EditText
+                        android:id="@+id/etSaleDiscount"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_search_bar"
+                        android:hint="الخصم (مبلغ ر.س)"
+                        android:inputType="numberDecimal"
+                        android:paddingHorizontal="12dp"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_muted"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvNetTotal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="الصافي: 0.00 ر.س"
+                        android:textColor="@color/success"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Payment Options & Customer Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_dashboard_card"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:text="طريقة الدفع:"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/spPaymentMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="42dp"
+                            android:background="@drawable/bg_search_bar" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/switchCreditSale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="بيع آجل / دفع جزئي"
+                        android:textColor="@color/danger"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etPaidAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bg_search_bar"
+                        android:hint="المبلغ المدفوع كاش (ر.س)"
+                        android:inputType="numberDecimal"
+                        android:paddingHorizontal="12dp"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_muted"
+                        android:visibility="gone" />
+
+                    <Spinner
+                        android:id="@+id/spinnerCustomers"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bg_search_bar"
+                        android:visibility="gone" />
+
+                    <!-- New Customer Form (if selected) -->
+                    <LinearLayout
+                        android:id="@+id/layoutNewCustomer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/etNewCustomerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/bg_search_bar"
+                            android:hint="اسم العميل الجديد *"
+                            android:paddingHorizontal="12dp"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_muted" />
+
+                        <EditText
+                            android:id="@+id/etNewCustomerPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:background="@drawable/bg_search_bar"
+                            android:hint="رقم الهاتف"
+                            android:inputType="phone"
+                            android:paddingHorizontal="12dp"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_muted" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Actions: Complete Sale & Share -->
+                <Button
+                    android:id="@+id/btnCompleteSale"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/success"
+                    android:elevation="3dp"
+                    android:text="إتمام عملية البيع وإصدار الفاتورة"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnShareInvoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_tile_card"
+                    android:drawableStart="@drawable/ic_share"
+                    android:drawablePadding="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:elevation="1dp"
+                    android:text="مشاركة الفاتورة الأخيرة"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:drawableTint="@color/primary" />
+
+                <TextView
+                    android:id="@+id/tvSaleResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:text="بانتظار إضافة الأصناف للسلة..."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <!-- FIXED BOTTOM NAVIGATION -->
+    <include
+        layout="@layout/layout_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

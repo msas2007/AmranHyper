@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_tile_card"
+    android:elevation="1dp"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layoutDirection="rtl">
+
+    <TextView
+        android:id="@+id/tvHistoryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/text_primary"
+        android:textSize="13sp" />
+
+</LinearLayout>

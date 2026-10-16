@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_page"
+    android:layoutDirection="rtl">
+
+    <!-- MAIN SCROLLABLE CONTENT -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigation"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ============================================ -->
+            <!-- 1. SMART HEADER -->
+            <!-- ============================================ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dashboard_header"
+                android:elevation="6dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="18dp"
+                android:paddingBottom="22dp">
+
+                <!-- Header Top Bar: Welcome + Store Identity + Quick Actions -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Rounded Logo Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        app:cardBackgroundColor="@color/bg_card">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="2dp"
+                            android:contentDescription="شعار المتجر"
+                            android:src="@drawable/amran_hyper" />
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Store & Welcome Title -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvHeaderWelcome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="مرحبًا، مدير النظام 👋"
+                            android:textColor="@color/header_text"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="عمران هيبر — سوبرماركت وإدارة المبيعات"
+                            android:textColor="@color/header_subtext"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Notifications Icon Button -->
+                    <ImageButton
+                        android:id="@+id/btnHeaderNotifications"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_header_button"
+                        android:contentDescription="الإشعارات والتنبيهات"
+                        android:padding="9dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_notifications"
+                        app:tint="@color/header_text" />
+
+                    <!-- Settings / Theme Toggle -->
+                    <ImageButton
+                        android:id="@+id/btnHeaderThemeToggle"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_header_button"
+                        android:contentDescription="تبديل الثيم"
+                        android:padding="9dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_theme_toggle"
+                        app:tint="@color/header_text" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Main Body Layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="24dp">
+
+                <!-- ============================================ -->
+                <!-- 2. QUICK ACTIONS SECTION (أفعال وليس مجرد أرقام) -->
+                <!-- ============================================ -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="الوصول السريع"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:orientation="horizontal">
+
+                    <!-- [ بيع جديد ] -->
+                    <Button
+                        android:id="@+id/btnQuickNewSale"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/primary"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="4dp"
+                        android:text="⚡ بيع جديد"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <!-- [ إضافة منتج ] -->
+                    <Button
+                        android:id="@+id/btnQuickAddProduct"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/accent"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="4dp"
+                        android:text="📦 إضافة منتج"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <!-- [ شراء ] -->
+                    <Button
+                        android:id="@+id/btnQuickPurchase"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/orange"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="4dp"
+                        android:text="🛒 شراء"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <!-- [ استلام دفعة ] -->
+                    <Button
+                        android:id="@+id/btnQuickCollectPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/secondary"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="4dp"
+                        android:text="💳 استلام دفعة"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- ============================================ -->
+                <!-- 3. TODAY'S SUMMARY KPI METRICS -->
+                <!-- ============================================ -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ملخص اليوم"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvViewReportsLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="عرض التفاصيل والتقارير ›"
+                        android:textColor="@color/primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="18dp">
+
+                    <!-- Row 1: مبيعات اليوم | فواتير اليوم -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+
+                        <!-- مبيعات اليوم -->
+                        <LinearLayout
+                            android:id="@+id/cardTodaySalesMetric"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:background="@drawable/bg_tile_card"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:elevation="2dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="المبيعات اليوم"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvTotalSales"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="0.00 ر.ي"
+                                android:textColor="@color/success"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- عدد الفواتير -->
+                        <LinearLayout
+                            android:id="@+id/cardTodayInvoicesMetric"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:background="@drawable/bg_tile_card"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:elevation="2dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="عدد الفواتير"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvInvoiceCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="0"
+                                android:textColor="@color/purple"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Row 2: المبلغ المستحق من العملاء | النواقص -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- ديون العملاء -->
+                        <LinearLayout
+                            android:id="@+id/cardCustomerDebtsMetric"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:background="@drawable/bg_tile_card"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:elevation="2dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="المستحق من العملاء"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCustomerDebtsTotal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="0.00 ر.س"
+                                android:textColor="@color/danger"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- النواقص -->
+                        <LinearLayout
+                            android:id="@+id/cardLowStockMetric"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:background="@drawable/bg_tile_card"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:elevation="2dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="نواقص المخزون"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvLowStockCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="0 منتجات"
+                                android:textColor="@color/warning"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!-- ============================================ -->
+                <!-- 4. "يحتاج انتباهك" (CONDITIONALLY VISIBLE ALERTS) -->
+                <!-- ============================================ -->
+                <LinearLayout
+                    android:id="@+id/layoutAlertsSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_low_stock"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="14dp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="18dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_alert_warning"
+                            app:tint="@color/danger"
+                            android:contentDescription="تنبيه" />
+
+                        <TextView
+                            android:id="@+id/tvAlertsTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="يحتاج انتباهك"
+                            android:textColor="@color/danger"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvAlertsBody"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="• توجد منتجات منخفضة المخزون يحتاج لإعادة طلبها"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <!-- ============================================ -->
+                <!-- 5. SEARCH & NAVIGATION ACCESS -->
+                <!-- ============================================ -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:background="@drawable/bg_tile_card"
+                    android:elevation="2dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/text_muted"
+                        android:contentDescription="بحث" />
+
+                    <EditText
+                        android:id="@+id/etSearchFilter"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="بحث عن منتج، باركود، فاتورة، عميل..."
+                        android:inputType="text"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_muted"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btnGlobalSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:backgroundTint="@color/primary"
+                        android:text="بحث"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- ============================================ -->
+                <!-- 6. RECENT ACTIVITIES (آخر النشاطات - SCROLLABLE) -->
+                <!-- ============================================ -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_tile_card"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="آخر النشاطات"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvAllInvoicesLink"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="جميع الفواتير ›"
+                            android:textColor="@color/primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Fully Scrollable Container for Dynamic Feed -->
+                    <LinearLayout
+                        android:id="@+id/layoutRecentOperations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <!-- Populated dynamically in Java -->
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- System Footer Note -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="عمران هيبر © 2026 — نظام إدارة المتاجر ونقاط البيع"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- FIXED BOTTOM NAVIGATION -->
+    <include
+        layout="@layout/layout_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

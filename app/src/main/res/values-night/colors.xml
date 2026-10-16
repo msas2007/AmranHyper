@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Theme Neutral Colors (Dark Mode) -->
+    <color name="bg_page">#0B1120</color>            <!-- Slate-950: Deep, immersive dark canvas -->
+    <color name="bg_card">#1E293B</color>            <!-- Slate-800: Elevated dark card -->
+    <color name="bg_card_secondary">#162032</color>  <!-- Slate-850: Inset secondary surface -->
+    <color name="bg_input">#162032</color>           <!-- Dark input fields -->
+    <color name="bg_input_alt">#24334A</color>       <!-- Alternative dark input -->
+    <color name="stroke_color">#334155</color>       <!-- Slate-700: Distinct boundary -->
+    <color name="stroke_focused">#60A5FA</color>     <!-- Focused stroke in dark -->
+
+    <!-- Header Gradients / Colors (Dark Mode) -->
+    <color name="bg_header_start">#0B1120</color>
+    <color name="bg_header_center">#1E293B</color>
+    <color name="bg_header_end">#1E293B</color>
+    <color name="bg_header">#1E293B</color>
+    <color name="header_text">#F8FAFC</color>
+    <color name="header_subtext">#94A3B8</color>
+
+    <!-- Text Colors (Dark Mode) -->
+    <color name="text_primary">#F8FAFC</color>       <!-- Slate-50: Crisp luminous white -->
+    <color name="text_secondary">#CBD5E1</color>     <!-- Slate-300: High contrast secondary text -->
+    <color name="text_muted">#64748B</color>         <!-- Slate-500: Subdued captions -->
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_on_secondary">#FFFFFF</color>
+
+    <!-- Core Brand & Semantic Colors (Dark Mode Optimized) -->
+    <color name="primary">#3B82F6</color>            <!-- Luminous Blue: High visibility on dark -->
+    <color name="primary_variant">#60A5FA</color>
+    <color name="primary_dark">#1D4ED8</color>
+    <color name="primary_light">#1E3A8A</color>      <!-- Darker navy tint for badge backgrounds -->
+    <color name="secondary">#14B8A6</color>          <!-- Luminous Teal -->
+    <color name="secondary_light">#134E48</color>
+    <color name="success">#10B981</color>            <!-- Luminous Emerald Green -->
+    <color name="success_light">#064E3B</color>
+    <color name="warning">#F59E0B</color>            <!-- Luminous Amber -->
+    <color name="warning_light">#78350F</color>
+    <color name="danger">#EF4444</color>             <!-- Luminous Red -->
+    <color name="danger_light">#7F1D1D</color>
+    <color name="info">#38BDF8</color>               <!-- Luminous Sky Blue -->
+    <color name="info_light">#0C4A6E</color>
+    <color name="purple">#A855F7</color>             <!-- Luminous Purple -->
+    <color name="purple_light">#581C87</color>
+    <color name="pink">#EC4899</color>
+    <color name="orange">#F97316</color>             <!-- Luminous Orange -->
+    <color name="orange_light">#7C2D12</color>
+
+    <!-- Ripple & Overlay -->
+    <color name="ripple_color">#33FFFFFF</color>
+</resources>

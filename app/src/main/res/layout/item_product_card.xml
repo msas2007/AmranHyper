@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_tile_card"
+    android:padding="14dp"
+    android:elevation="2dp"
+    android:layoutDirection="rtl">
+
+    <!-- Top Row: Product Name & Stock Badge -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="اسم المنتج"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tvStockBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="متوفر"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="@color/success"
+            android:background="@drawable/bg_badge_good_stock"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp" />
+    </LinearLayout>
+
+    <!-- Second Row: Category & Barcode -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="عام"
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary"
+            android:background="@drawable/bg_category_chip"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/tvBarcode"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="الباركود: 12345678"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary" />
+    </LinearLayout>
+
+    <!-- Subtle Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/stroke_color"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Third Row: Pricing, Quantity & Expiry -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Prices -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSalePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="سعر البيع: 25.0 ر.س"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary" />
+
+            <TextView
+                android:id="@+id/tvPurchasePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="سعر الشراء: 20.0 ر.س"
+                android:textSize="11sp"
+                android:textColor="@color/text_muted"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Stock Quantity & Expiry -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="المخزون: 15"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/tvExpiryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الانتهاء: 2026-12-01"
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btnItemAdjust"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="38dp"
+            android:text="جرد"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_inventory"
+            android:drawablePadding="4dp"
+            android:paddingHorizontal="8dp"
+            app:drawableTint="@color/primary_dark"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btnItemEdit"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="38dp"
+            android:text="تعديل"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_edit"
+            android:drawablePadding="4dp"
+            android:paddingHorizontal="8dp"
+            app:drawableTint="@color/primary"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp" />
+
+        <Button
+            android:id="@+id/btnItemDelete"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="38dp"
+            android:text="أرشفة / حذف"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="@color/danger"
+            android:background="@drawable/bg_tile_card"
+            android:drawableStart="@drawable/ic_delete"
+            android:drawablePadding="4dp"
+            android:paddingHorizontal="8dp"
+            app:drawableTint="@color/danger"
+            android:layout_marginStart="4dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
