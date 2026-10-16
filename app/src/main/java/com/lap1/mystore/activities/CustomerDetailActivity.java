@@ -23,11 +23,14 @@ import androidx.core.content.FileProvider;
 
 import com.lap1.mystore.R;
 import com.lap1.mystore.database.DatabaseHelper;
+import com.lap1.mystore.utils.BottomNavHelper;
+import com.lap1.mystore.utils.CustomerStatementPdfHelper;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class CustomerDetailActivity extends AppCompatActivity {
@@ -46,6 +49,25 @@ public class CustomerDetailActivity extends AppCompatActivity {
 
     private ArrayList<String> historyList;
     private ArrayAdapter<String> historyAdapter;
+    private List<CustomerLedgerModel> ledgerListModel = new ArrayList<>();
+
+    public static class CustomerLedgerModel {
+        public String type;
+        public long refId;
+        public String date;
+        public double runningBalance;
+        public String notes;
+        public double amount;
+
+        public CustomerLedgerModel(String type, long refId, String date, double runningBalance, String notes, double amount) {
+            this.type = type;
+            this.refId = refId;
+            this.date = date;
+            this.runningBalance = runningBalance;
+            this.notes = notes;
+            this.amount = amount;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +119,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
         });
 
         // الشريط السفلي الثابت
-        com.lap1.mystore.utils.BottomNavHelper.setupBottomNav(this, "");
+        BottomNavHelper.setupBottomNav(this, "");
     }
 
     private void loadCustomerData() {
@@ -139,6 +161,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
 
         // 3. جلب كشف حساب العميل التحليلي بالترتيب الزمني مع الرصيد التراكمي
         historyList.clear();
+        ledgerListModel.clear();
 
         class CustomerTx {
             int id;
@@ -191,7 +214,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
                     " | الآجل الجديد: " + String.format(Locale.US, "%.2f", rem) +
                     " [" + status + "]";
 
-            txList.add(new CustomerTx(saleId, "SALE", date, rem, text));
+            txList.add(new CustomerTx(saleId, DatabaseHelper.TX_SALE, date, rem, text));
         }
         cInvoices.close();
 
@@ -210,7 +233,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
                     "\nالتاريخ: " + pDate +
                     "\nملاحظات: " + (notes != null && !notes.isEmpty() ? notes : "تسديد حساب");
 
-            txList.add(new CustomerTx(pId, "PAYMENT", pDate, -amt, text));
+            txList.add(new CustomerTx(pId, DatabaseHelper.TX_PAYMENT, pDate, -amt, text));
         }
         cPayments.close();
 
@@ -231,7 +254,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
                     "\nقيمة المرتجع: " + String.format(Locale.US, "%.2f ر.س", retAmount) +
                     " | خصم من الدين: " + String.format(Locale.US, "%.2f ر.س", debtRed);
 
-            txList.add(new CustomerTx(rId, "RETURN", rDate, -debtRed, text));
+            txList.add(new CustomerTx(rId, DatabaseHelper.TX_RETURN, rDate, -debtRed, text));
         }
         cReturns.close();
 
@@ -249,6 +272,15 @@ public class CustomerDetailActivity extends AppCompatActivity {
             if (runningBal < 0) runningBal = 0;
             String entry = tx.displayText + "\n📊 الرصيد المتبقي بعد الحركة: " + String.format(Locale.US, "%.2f ر.س", runningBal);
             historyList.add(entry);
+
+            ledgerListModel.add(new CustomerLedgerModel(
+                    tx.type,
+                    tx.id,
+                    tx.date,
+                    runningBal,
+                    tx.displayText,
+                    tx.amountChange
+            ));
         }
 
         if (historyList.isEmpty()) {
@@ -334,73 +366,8 @@ public class CustomerDetailActivity extends AppCompatActivity {
     }
 
     private void generateAndSharePdf() {
-        PdfDocument pdfDocument = new PdfDocument();
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(595, 842, 1).create();
-        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-
-        Canvas canvas = page.getCanvas();
-        Paint paint = new Paint();
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(14);
-
-        int startX = 545; // للغة العربية من اليمين
-        int y = 50;
-
-        paint.setFakeBoldText(true);
-        paint.setTextSize(18);
-        canvas.drawText("تقرير كشف حساب العميل - MyStore", startX - 280, y, paint);
-        y += 35;
-
-        paint.setFakeBoldText(false);
-        paint.setTextSize(14);
-        canvas.drawText("اسم العميل: " + customerName, startX - paint.measureText("اسم العميل: " + customerName), y, paint);
-        y += 22;
-        canvas.drawText("الهاتف: " + (customerPhone != null ? customerPhone : "غير متوفر"), startX - paint.measureText("الهاتف: " + (customerPhone != null ? customerPhone : "غير متوفر")), y, paint);
-        y += 30;
-
-        canvas.drawText("------------------------------------------------------------------------------------------------", 40, y, paint);
-        y += 25;
-        canvas.drawText(String.format("إجمالي المشتريات الآجلة: %.2f", totalDebt), startX - paint.measureText(String.format("إجمالي المشتريات الآجلة: %.2f", totalDebt)), y, paint);
-        y += 22;
-        canvas.drawText(String.format("إجمالي المدفوع: %.2f", totalPaid), startX - paint.measureText(String.format("إجمالي المدفوع: %.2f", totalPaid)), y, paint);
-        y += 22;
-        paint.setFakeBoldText(true);
-        canvas.drawText(String.format("الرصيد المتبقي (الدين): %.2f", currentBalance), startX - paint.measureText(String.format("الرصيد المتبقي (الدين): %.2f", currentBalance)), y, paint);
-        y += 35;
-        paint.setFakeBoldText(false);
-
-        canvas.drawText("سجل الحركات وتفاصيل المنتجات:", startX - paint.measureText("سجل الحركات وتفاصيل المنتجات:"), y, paint);
-        y += 22;
-        canvas.drawText("------------------------------------------------------------------------------------------------", 40, y, paint);
-        y += 25;
-
-        for (String item : historyList) {
-            if (y > 780) break;
-            String[] lines = item.split("\n");
-            for (String line : lines) {
-                canvas.drawText(line, startX - paint.measureText(line), y, paint);
-                y += 18;
-            }
-            y += 10;
-        }
-
-        pdfDocument.finishPage(page);
-
-        File file = new File(getExternalFilesDir(null), "Customer_Statement_" + customerId + ".pdf");
-        try {
-            pdfDocument.writeTo(new FileOutputStream(file));
-            pdfDocument.close();
-
-            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("application/pdf");
-            intent.putExtra(Intent.EXTRA_STREAM, uri);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            startActivity(Intent.createChooser(intent, "مشاركة كشف الحساب PDF عبر"));
-
-        } catch (IOException e) {
-            Toast.makeText(this, "خطأ في إنشاء ملف PDF: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            pdfDocument.close();
-        }
+        CustomerStatementPdfHelper.generateAndShareStatementPdf(
+                this, customerId, customerName, customerPhone, totalDebt, totalPaid, 0.0, currentBalance, ledgerListModel
+        );
     }
 }
